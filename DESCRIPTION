@@ -1,11 +1,16 @@
 Package: ecointeraction
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Set of tools for ecological interaction geospatial analysis
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Author: Angel Luis Robles Fernández
+Maintainer: The package maintainer <a.l.robles.fernadnez@gmail.com>
+Description: This packages provies tools for the eocological interacteion analysis.
+    This is analysis is carried out using Machine Learning techniques.
+License: GPL-3 + file LICENSE
+Imports:
+  dplyr,
+  magrittr,
+  rlang
 Encoding: UTF-8
 LazyData: true
+RoxygenNote: 7.1.0
