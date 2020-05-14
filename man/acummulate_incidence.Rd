@@ -4,7 +4,7 @@
 \alias{acummulate_incidence}
 \title{Acummulate incidence from interaction data frame}
 \usage{
-acummulate_incidence(data, group, incidence)
+acummulate_incidence(data, group, incidence = incidence)
 }
 \arguments{
 \item{data}{A \code{data.frame} object with interaction information}

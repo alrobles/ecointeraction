@@ -1,6 +1,6 @@
 #' Acummulate incidence from interaction data frame
-#' @importFrom dplyr group_by summarise arrange ungroup mutate
-#' @importFrom rlang enquo
+#' @importFrom dplyr group_by summarise arrange ungroup mutate row_number select
+#' @importFrom rlang enquo :=
 #' @param data A \code{data.frame} object with interaction information
 #' @param group A group column in data \code{data.frame} to acummulate incidence in an interaction \code{data.frame}
 #' @param incidence The incidence of interaction in the data \code{data.frame}
@@ -11,13 +11,18 @@
 #' @examples
 #' library(ecointeraction)
 #'  acummulate_incidence(mammalvirus, virus, incidence)
-acummulate_incidence <- function(data, group, incidence ){
+acummulate_incidence <- function(data, group, incidence = incidence ){
   group <- rlang::enquo(group)
   incidence <- rlang::enquo(incidence)
+  cummulativesum <- "cummulativesum"
+  id <- "id"
   data %>%
     dplyr::group_by(!! group) %>%
     dplyr::summarise(incidence = sum(!! incidence ) ) %>%
     dplyr::arrange(dplyr::desc(incidence)) %>%
     dplyr::ungroup() %>%
-    dplyr::mutate(cummulativesum = cumsum(incidence) )
+    dplyr::mutate(!! cummulativesum := cumsum(incidence) ) %>%
+    dplyr::mutate(!! id := dplyr::row_number()) %>%
+    dplyr::select(id, dplyr::everything())
+
 }

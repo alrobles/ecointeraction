@@ -4,7 +4,13 @@
 \alias{cummulative_rate}
 \title{cummulative_rate}
 \usage{
-cummulative_rate(data, id, incidence, cummulativesum)
+cummulative_rate(
+  data,
+  id = id,
+  incidence = incidence,
+  cummulativesum = cummulativesum,
+  accuracy = 4
+)
 }
 \arguments{
 \item{data}{A \code{data.frame} object with interaction information}
@@ -14,9 +20,12 @@ cummulative_rate(data, id, incidence, cummulativesum)
 \item{incidence}{The incidence of interaction in the data \code{data.frame}}
 
 \item{cummulativesum}{cummulative counted incidences}
+
+\item{accuracy}{of the derivate of the rate}
 }
 \value{
 A \code{data.frame} with the rate of change from fractional cuumlative incidence
+and the first and second derivates of the rate
 }
 \description{
 cummulative_rate
