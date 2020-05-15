@@ -12,7 +12,7 @@
 #'@format A data frame with 195 rows and 12 variables:
 #' \describe{
 #'   \item{species}{Bird species}
-#'   \item{incicende}{Number of records from Malavi database for each species fo Plasmodium gn.}
+#'   \item{incidence}{Number of records from Malavi database for each species fo Plasmodium gn.}
 #' }
 #'@source \url{http://130.235.244.92/Malavi/}
 #'@example
