@@ -30,5 +30,8 @@ This allow to get a dataset ready to model with ML framework
 }
 \examples{
 library(ecointeraction)
-prep_incidence_data(birdsplasmodium, birdsdistance)
+birdsplasmodium \%>\%
+    acummulate_incidence(group = species) \%>\%
+    cutoff_incidence() \%>\%
+    prep_incidence_data(distance  = birdsdistance)
 }
