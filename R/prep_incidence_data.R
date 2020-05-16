@@ -15,7 +15,10 @@
 #'
 #' @examples
 #' library(ecointeraction)
-#' prep_incidence_data(birdsplasmodium, birdsdistance)
+#' birdsplasmodium %>%
+#'     acummulate_incidence(group = species) %>%
+#'     cutoff_incidence() %>%
+#'     prep_incidence_data(distance  = birdsdistance)
 prep_incidence_data <- function(incidence, distance,  by = "species" ){
   if(!( any( names(distance) == "species")  | any( names(incidence) == "species"  )) ){
     stop('distance or incidence needs an species column')
@@ -23,11 +26,17 @@ prep_incidence_data <- function(incidence, distance,  by = "species" ){
   by <- rlang::enquo(by)
   by <- rlang::set_names(rlang::quo_name(by), rlang::quo_name(by))
   not_intefected <- dplyr::anti_join(distance, incidence, by = by)
-  not_intefected_sample <- not_intefected %>%
-    dplyr::sample_n(nrow(incidence)*6)
+
+  if(nrow(incidence)*6 < nrow(distance)){
+    not_intefected_sample <- not_intefected %>%
+      dplyr::sample_n(nrow(incidence)*6)
+  }else  {
+    stop('The incidence dataset is too large to predict. Please cuttoff your incidence data')
+  }
   infected <- dplyr::inner_join(dplyr::select(incidence, by), distance, by = by) %>%
     dplyr::mutate(incidence = 1)
   dplyr::full_join(infected, not_intefected_sample ) %>%
     dplyr::mutate(incidence = ifelse(is.na(incidence), "unknown", "susceptible") %>% as.factor() )  %>%
     dplyr::sample_frac(1L)
+
 }
