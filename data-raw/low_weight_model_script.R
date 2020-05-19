@@ -24,7 +24,7 @@ mammalvirusincidence <-  mammalvirus %>%
   ecointeraction::cutoff_incidence() %>%
   dplyr::select(mammal_species) %>%
   dplyr::rename(species = mammal_species) %>%
-  dplyr::mutate(species  = str_replace(species, "_", " ") )
+  dplyr::mutate(species  = stringr::str_replace(species, "_", " ") )
 
 
 mammalsData <-  prep_incidence_data(distance = mammalsdistance, incidence = mammalvirusincidence)
@@ -45,15 +45,15 @@ data_train <- juice(data_recipe)
 data_test <- data_recipe %>%
   bake(testing(data_split))
 
-# rm(mg)
+ rm(mg)
 
-AutomodelGrid <- function(data, tunelength = 5){
+AutomodelGrid <- function(data_train, tunelength = 5){
 
 
   mg <- model_grid() %>%
     share_settings(
-      y = data[["incidence"]],
-      x = data %>%
+      y = data_train[["incidence"]],
+      x = data_train %>%
         ungroup %>%
         dplyr::select(contains("distance")),
       metric = "ROC",
@@ -68,7 +68,7 @@ AutomodelGrid <- function(data, tunelength = 5){
     )
 
   mg <- mg %>%
-    add_model(model_name = "Logistic Regression Baseline",
+    modelgrid::add_model(model_name = "Logistic Regression Baseline",
               method = "glm",
               family = binomial(link = "logit"))
   # mg <- mg %>%
