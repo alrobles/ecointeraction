@@ -15,7 +15,7 @@ list.of.packages <- c("caret",
                       "rasterVis",
                       "gridExtra")
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
-if(length(new.packages)) install.packages(new.packages, repos = "https://https://cloud.r-project.org/")
+if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org/")
 sapply(list.of.packages, require, character.only = TRUE)
 
 # Se lee la bases de datos de mamiferos y flavivirus

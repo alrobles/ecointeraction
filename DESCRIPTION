@@ -7,6 +7,7 @@ Maintainer: The package maintainer <a.l.robles.fernadnez@gmail.com>
 Description: This packages provies tools for the eocological interacteion analysis.
     This is analysis is carried out using Machine Learning techniques.
 License: GPL-3 + file LICENSE
+Depends: R (>= 3.5.0)
 Imports:
   dplyr,
   magrittr,
