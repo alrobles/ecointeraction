@@ -17,8 +17,9 @@ list.of.packages <- c("caret",
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org/")
 sapply(list.of.packages, require, character.only = TRUE)
+library(ecointeraction)
 
-birdswnv_cutoff <- birdswnv %>%
+birdswnv_cutoff <- ecointeraction::birdswnv %>%
   ecointeraction::acummulate_incidence(species) %>%
   cutoff_incidence(accuracy = 6)
 
@@ -102,4 +103,4 @@ mg$model_fits$Ranger %>%
 mg$model_fits$Ranger %>%
   predict(data_test) %>%
   table(data_test$incidence, .) %>%
-  yard-stick::accuracy()
+  yardstick::accuracy()
