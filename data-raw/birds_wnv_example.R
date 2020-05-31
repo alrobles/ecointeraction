@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 system.time({
   devtools::install_github("alrobles/ecointeraction",
                            auth_token = "1d246d7725ebae0cfc417de923096cb4b608a6dc", dependencies = FALSE)
@@ -150,6 +151,8 @@ system.time({
 =======
 <<<<<<< HEAD
 =======
+>>>>>>> 39f72184407fb22584767f97e738e4348b27721d
+=======
 devtools::install_github("alrobles/ecointeraction",
                          auth_token = "1d246d7725ebae0cfc417de923096cb4b608a6dc", dependencies = FALSE)
 >>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
@@ -266,4 +269,7 @@ mg$model_fits$Ranger %>%
 
 =======
 >>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
+<<<<<<< HEAD
+>>>>>>> 39f72184407fb22584767f97e738e4348b27721d
+=======
 >>>>>>> 39f72184407fb22584767f97e738e4348b27721d
