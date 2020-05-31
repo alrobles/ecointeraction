@@ -24,5 +24,4 @@ acummulate_incidence <- function(data, group, incidence = incidence ){
     dplyr::mutate(!! cummulativesum := cumsum(incidence) ) %>%
     dplyr::mutate(!! id := dplyr::row_number()) %>%
     dplyr::select(id, dplyr::everything())
-
 }
