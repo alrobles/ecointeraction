@@ -1,3 +1,8 @@
+<<<<<<< HEAD
+=======
+devtools::install_github("alrobles/ecointeraction",
+                         auth_token = "1d246d7725ebae0cfc417de923096cb4b608a6dc", dependencies = FALSE)
+>>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
 
 library(ecointeraction)
 
@@ -15,8 +20,11 @@ list.of.packages <- c("caret",
 new.packages <- list.of.packages[!(list.of.packages %in% installed.packages()[,"Package"])]
 if(length(new.packages)) install.packages(new.packages, repos = "https://cloud.r-project.org/")
 sapply(list.of.packages, require, character.only = TRUE)
+<<<<<<< HEAD
 devtools::install_github("alrobles/ecointeraction",
                          auth_token = "1d246d7725ebae0cfc417de923096cb4b608a6dc", dependencies = FALSE)
+=======
+>>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
 library(ecointeraction)
 
 birdswnv_cutoff <- ecointeraction::birdswnv %>%
@@ -104,4 +112,7 @@ mg$model_fits$Ranger %>%
   predict(data_test) %>%
   table(data_test$incidence, .) %>%
   yardstick::accuracy()
+<<<<<<< HEAD
 
+=======
+>>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
