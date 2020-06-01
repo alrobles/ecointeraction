@@ -265,11 +265,3 @@ mg$model_fits$Ranger %>%
   predict(data_test) %>%
   table(data_test$incidence, .) %>%
   yardstick::accuracy()
-<<<<<<< HEAD
-
-=======
->>>>>>> 3070c19f6ee2ebabe57bdfefc2879c0b8d652612
-<<<<<<< HEAD
->>>>>>> 39f72184407fb22584767f97e738e4348b27721d
-=======
->>>>>>> 39f72184407fb22584767f97e738e4348b27721d

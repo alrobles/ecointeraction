@@ -139,7 +139,6 @@ pred_wrapper <- function(object, newdata){
 }
 vip::vi_firm(mg$model_fits$RandomForest, names(mg$model_fits$RandomForest$trainingData)[-8])
 vip::vip(mg$model_fits$RandomForest)
-?partial
 partial(mg$model_fits$Ranger, names(mg$model_fits$RandomForest$trainingData)[c(2, 5)], train = select(DataTest, -infected), ice = FALSE, prob= TRUE) %>%
   autoplot(alpha = 0.5)
 
