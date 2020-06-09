@@ -116,36 +116,84 @@ system.time({
     dplyr::filter(susceptible > 0.5) %>%
     dplyr::select(-unknown)
 
-  #generate maps
-  tmpdir <- tempdir()
 
-  BirdList <- paste0("Birds_", 1:4)
+  # 1.0 Instalación y carga de paquetes
+  library(DBI)
+  library(RPostgres)
+  library(sf)
 
-  predict_shapefile <- function(x, bucket = 'https://ecointeraction.s3.us-east-2.amazonaws.com/'){
-    url <- paste0(bucket, x, '.zip')
-    file <- basename(url)
-    download.file(url, file)
-    unzip(file, exdir = tmpdir )
-    shapeFile <- paste0(tmpdir,"/", x)
-    Birds <- sf::st_read(shapeFile) %>%
-      inner_join(predicted,  by = c("SCINAME" = "species"))
-    unlink(shapeFile)
-    file.remove(file)
-    gc()
-    return(Birds)
-  }
-  BirdList <- purrr::map(BirdList, predict_shapefile) %>% purrr::reduce(rbind)
-  gc()
+  # 2.0 Parámetros de conexión a PostgreSQL
+  dvr <- RPostgres::Postgres()
+  db <- 'shapefiles'  ##Nombre de la BBDD
+  host_db <- '152.44.44.45'
+  db_port <- '5432'
+  #db_user <- .rs.askForPassword("usuario")  ##Tu usuario
+  #db_password <- .rs.askForPassword("contraseña") ##Tu contraseña
+
+  # 3.0 Conexión
+  con <- dbConnect(dvr, dbname = db, host=host_db, port=db_port,
+                   user=.rs.askForPassword("usuario"), password=.rs.askForPassword("contraseña") )
+
+  dbListTables(con)
+
+  library(dbplyr)
+  library(dplyr)
+
+
+  output <- capture.output(dplyr::tbl(con, "birds") %>%
+    dplyr::filter(SCINAME %in%  local(predicted$species) ) %>%
+    dplyr::show_query())
+  final_output <-  paste(tail(output, -1), collapse="")
+  # 5.0 Lectura de una tabla
+
+  bird <- sf::st_read(con, query = final_output )
+
+  dbDisconnect(con)
+
+
+  # 6.0 Plot --> Graficar los elementos de la tabla que comienzan con z
+  bird <- bird %>% left_join(predicted, by = c("SCINAME" = "species"))
+
+
 
   library(raster)
   library(fasterize)
-  r <- raster(BirdList, res = 1/32)
-  crs(r) <- crs(BirdList)
-  rsum <- fasterize(BirdList, r, field = "susceptible", fun = "sum")
-  rcount <- fasterize(BirdList, r, field = "susceptible", fun = "count")
+  r <- raster(bird, res = 1/32)
+  crs(r) <- crs(bird)
+  rsum <- fasterize(bird, r, field = "susceptible", fun = "sum")
+  rcount <- fasterize(bird, r, field = "susceptible", fun = "count")
   rmean <- rsum/rcount
 
- plot(rmean)
+  rnorm <- rcount/max(rcount@data@values, na.rm = TRUE )
+  dplyr::
+ plot(rcount)
+ plot(rnorm > 0.6)
+
+ plot(rnorm)
+
+ wnvr_raw <- readxl::read_excel("data-raw/Tolsa2018Birds-WNV.xls") %>% sample_frac(0.65)
+ wnv_long_lat <- wnvr_raw %>% dplyr::select(longitud, latitud)
+
+ points(wnv_long_lat)
+
+ wnv_extract_points_rnorm <- extract(rnorm, wnv_long_lat) %>% enframe()
+ wnv_extract_points_rmean <- extract(rmean, wnv_long_lat) %>% enframe() %>% rename(valuemean = value)
+
+ wnv_extract_points_rnorm %>%
+   left_join(wnv_extract_points_rmean) %>%
+   bind_cols(wnv_long_lat) %>%
+   ggplot() + geom_density(aes(value))
+
+
+ wnv_extract_points_rnorm %>%
+   mutate(validate = ifelse(value > 20, 1, 0)) %>%
+   group_by(validate) %>% count() %>% tidyr::spread(validate, n)
+
+ wnv_extract_points_rnorm %>%
+   left_join(wnv_extract_points_rmean) %>%
+   bind_cols(wnv_long_lat) %>% dplyr::select(value, valuemean)  %>%
+   na.exclude() %>% cor
+
 
 })
 

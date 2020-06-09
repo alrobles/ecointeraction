@@ -16,21 +16,23 @@ db_port <- '5432'
 con <- dbConnect(dvr, dbname = db, host=host_db, port=db_port,
                  user=.rs.askForPassword("usuario"), password=.rs.askForPassword("contraseña") )
 
-tbl(con, "birds")
 dbListTables(con)
+
 library(dbplyr)
 library(dplyr)
-z <- tbl(con, "birds") %>%
-  filter(grepl("^Z", SCINAME)) %>%
+
+
+z <- dplyr::tbl(con, "birds") %>%
+  dplyr::filter(grepl("^Z", SCINAME)) %>%
   head(10) %>%
-  show_query()
+  dplyr::show_query()
 
 # 5.0 Lectura de una tabla
 
-bird = st_read(con, query = "
+bird <- sf::st_read(con, query = "
                SELECT * FROM \"birds\"
-               WHERE ((\"SCINAME\") ~ ('^Zen'))
-               LIMIT 100;")
+               WHERE ((\"SCINAME\") ~ ('^A'))
+               LIMIT 5;")
 dbDisconnect(con)
 
 
