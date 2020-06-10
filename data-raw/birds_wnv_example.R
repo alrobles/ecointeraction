@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
 system.time({
   devtools::install_github("alrobles/ecointeraction",
                            auth_token = "1d246d7725ebae0cfc417de923096cb4b608a6dc", dependencies = FALSE)
@@ -91,7 +89,7 @@ system.time({
     mg <- caret::train(mg)
     return(mg)
   }
-  mg <- AutomodelGrid(data_train, tunelength = 20)
+  mg <- AutomodelGrid(data_train, tunelength = 5)
 
   #variabe importance
   vip::vip(mg$model_fits$Ranger)
@@ -134,7 +132,6 @@ system.time({
   con <- dbConnect(dvr, dbname = db, host=host_db, port=db_port,
                    user=.rs.askForPassword("usuario"), password=.rs.askForPassword("contraseña") )
 
-  dbListTables(con)
 
   library(dbplyr)
   library(dplyr)
@@ -143,6 +140,7 @@ system.time({
   output <- capture.output(dplyr::tbl(con, "birds") %>%
     dplyr::filter(SCINAME %in%  local(predicted$species) ) %>%
     dplyr::show_query())
+
   final_output <-  paste(tail(output, -1), collapse="")
   # 5.0 Lectura de una tabla
 
@@ -165,8 +163,8 @@ system.time({
   rmean <- rsum/rcount
 
   rnorm <- rcount/max(rcount@data@values, na.rm = TRUE )
-  dplyr::
- plot(rcount)
+  plot(rcount)
+
  plot(rnorm > 0.6)
 
  plot(rnorm)
@@ -176,23 +174,80 @@ system.time({
 
  points(wnv_long_lat)
 
+
  wnv_extract_points_rnorm <- extract(rnorm, wnv_long_lat) %>% enframe()
  wnv_extract_points_rmean <- extract(rmean, wnv_long_lat) %>% enframe() %>% rename(valuemean = value)
 
- wnv_extract_points_rnorm %>%
-   left_join(wnv_extract_points_rmean) %>%
+
+ rand_pts <- sampleRandom(rnorm, size=4000, cells=TRUE, sp=TRUE)
+ rand_pts <- rand_pts %>% as_tibble %>%
+   rename(long = x, lat = y, value = layer) %>%
+   mutate(susceptible = 0) %>%
+   dplyr::select(susceptible, value, long, lat)
+
+ wnv_extract_points_rnorm <-  wnv_extract_points_rnorm %>%
    bind_cols(wnv_long_lat) %>%
-   ggplot() + geom_density(aes(value))
+   mutate(susceptible = 1) %>%
+   mutate(long = longitud, lat = latitud) %>%
+   dplyr::select(susceptible, value, long, lat)
+  wnv_pts_validation <-  bind_rows(rand_pts, wnv_extract_points_rnorm) %>%
+   sample_frac(1L) %>% na.exclude()
 
+  wnv_pts_validation %>%
+    mutate(susceptible = as.factor(susceptible)) %>%
+    group_by(susceptible) %>%
+    ggplot()+
+    geom_density(aes(value, col = susceptible))
+
+  model_wnv_validation <- glm(susceptible ~ value - 1, data = wnv_pts_validation, family = binomial(link = "logit"))
+  p <- predict(object = model_wnv_validation)
+
+    results <- tibble(susceptible = wnv_pts_validation$susceptible, p)
+  results %>% arrange(desc(p))
+  plot(model_wnv_validation)
+  wnv_extract_points_rnorm %>% filter(is.na(value))
 
  wnv_extract_points_rnorm %>%
-   mutate(validate = ifelse(value > 20, 1, 0)) %>%
+   mutate(validate = ifelse(value > 0, 1, 0)) %>%
    group_by(validate) %>% count() %>% tidyr::spread(validate, n)
 
  wnv_extract_points_rnorm %>%
    left_join(wnv_extract_points_rmean) %>%
    bind_cols(wnv_long_lat) %>% dplyr::select(value, valuemean)  %>%
    na.exclude() %>% cor
+
+ #añadir top 20
+ predicted_top_20  <- predicted %>% arrange(desc(susceptible)) %>% head(20)
+ con <- dbConnect(dvr, dbname = db, host=host_db, port=db_port,
+                  user=.rs.askForPassword("usuario"), password=.rs.askForPassword("contraseña") )
+
+ output <- capture.output(dplyr::tbl(con, "birds") %>%
+                            dplyr::filter(SCINAME %in%  local(predicted_top_20$species) ) %>%
+                            dplyr::show_query())
+ final_output <-  paste(tail(output, -1), collapse="")
+ # 5.0 Lectura de una tabla
+
+ bird_20 <- sf::st_read(con, query = final_output )
+ bird_20 <- bird_20 %>% left_join(predicted_top_20, by = c("SCINAME" = "species"))
+
+
+
+ library(raster)
+ library(fasterize)
+ r_20 <- raster(bird_20, res = 1/32)
+ crs(r_20) <- crs(bird_20)
+ rsum_20 <- fasterize(bird_20, r_20, field = "susceptible", fun = "sum")
+ rcount_20 <- fasterize(bird_20, r_20, field = "susceptible", fun = "count")
+ rmean_20 <- rsum_20/rcount_20
+
+ rnorm_20 <- rcount_20/max(rcount_20@data@values, na.rm = TRUE )
+ plot(rnorm_20 )
+ plot(rnorm_20)
+
+
+
+
+
 
 
 })
