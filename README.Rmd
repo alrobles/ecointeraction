@@ -38,14 +38,13 @@ We explore a raw data base of mammal virus.
     
 ```{r example1}
 library(ecointeraction)
-mammalvirus
+DT::datatable(mammalvirus)
 ```
 
 ```{r example11, echo=FALSE}
 knitr::kable(head(mammalvirus))
 ```
 We use the function accumulate_incidence
-
 
 ```{r example2}
 library(ecointeraction)
