@@ -22,4 +22,7 @@ A dataset containing the incidence of Plasmodium genus on birds
 The raw-data is from Malavi dataset. Contains avian malaria information for different Genus.
 Then data was summarized counting entries for plasmodium genus taked as raw incidence
 }
+\examples{
+data(birdsplasmodium)
+}
 \keyword{datasets}

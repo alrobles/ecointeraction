@@ -22,4 +22,7 @@ A dataset containing the incidence of coronavirus on bats
 The raw-data is from DbatVir dataset. Containsinformation for different coronavirus.
 Then data was summarized counting entries for coronavirus taked as raw incidence by bat species
 }
+\examples{
+data(batscoronavirus)
+}
 \keyword{datasets}

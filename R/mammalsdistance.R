@@ -19,6 +19,6 @@
 #'   \item{env_distance}{Environmental distance}
 #'   \item{phylo_distance}{Phylogenetic distance}
 #' }
-#'@example
+#'@examples
 #' data(mammalsdistance)
 "mammalsdistance"

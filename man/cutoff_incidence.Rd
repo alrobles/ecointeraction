@@ -26,5 +26,5 @@ with the minimal number of species possible
 }
 \examples{
 library(ecointeraction)
-acummulate_incidence(mammalvirus, virus, incidence) \%>\% cutoff_incidence
+accumulate_incidence(mammalvirus, virus, incidence) \%>\% cutoff_incidence
 }

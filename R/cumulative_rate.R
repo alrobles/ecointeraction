@@ -12,9 +12,9 @@
 #'
 #' @examples
 #' library(ecointeraction)
-#' data <-  acummulate_incidence(mammalvirus, mammal_species, incidence)
-#' cumrateData <- cummulative_rate(data, id, incidence, cummulativesum)
-cummulative_rate <- function(data, id = id, incidence = incidence, cummulativesum = cummulativesum, accuracy = 4){
+#' data <-  accumulate_incidence(mammalvirus, mammal_species, incidence)
+#' cumrateData <- cumulative_rate(data, id, incidence, cummulativesum)
+cumulative_rate <- function(data, id = id, incidence = incidence, cummulativesum = cummulativesum, accuracy = 4){
   id <- rlang::enquo(id)
   incidence <- rlang::enquo(incidence)
   cummulativesum <- rlang::enquo(cummulativesum)

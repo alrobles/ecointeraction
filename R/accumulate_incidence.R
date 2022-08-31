@@ -1,17 +1,20 @@
-#' Acummulate incidence from interaction data frame
+#' Accumulate incidence from interaction data frame
 #' @importFrom dplyr group_by summarise arrange ungroup mutate row_number select
 #' @importFrom rlang enquo :=
 #' @param data A \code{data.frame} object with interaction information
-#' @param group A group column in data \code{data.frame} to acummulate incidence in an interaction \code{data.frame}
+#' @param group A group column in data \code{data.frame} to accumulate incidence
+#' in an interaction \code{data.frame}
 #' @param incidence The incidence of interaction in the data \code{data.frame}
 #'
-#' @return A \code{data.frame} with the summarized incidence from an interaction \code{data.frame}. Includes the acummulated incidence for each group provided
+#' @return A \code{data.frame} with the summarized incidence from an
+#' interaction \code{data.frame}.
+#' Includes the accumulated incidence for each group provided
 #' @export
 #'
 #' @examples
 #' library(ecointeraction)
-#'  acummulate_incidence(mammalvirus, virus, incidence)
-acummulate_incidence <- function(data, group, incidence = incidence ){
+#' accumulate_incidence(mammalvirus, virus, incidence)
+accumulate_incidence <- function(data, group, incidence = incidence ){
   group <- rlang::enquo(group)
   incidence <- rlang::enquo(incidence)
   cummulativesum <- "cummulativesum"

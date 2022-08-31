@@ -20,6 +20,6 @@
 #'   \item{phylo_distance}{Phylogenetic distance}
 #'   \item{incidence}{Label if a host has been reported with the interaction}
 #' }
-#'@example
+#'@examples
 #' data(data_example)
 "data_example"

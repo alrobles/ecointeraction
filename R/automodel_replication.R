@@ -89,8 +89,7 @@ automodel_replication <- function(listData, distance_df)
 
   #model accuracy
   accuracy_score <-
-    table(data_test$incidence,
-          predict(mg$model_fits$Ranger, data_test) ) %>%
+    table(data_test$incidence, predict(mg$model_fits$Ranger, data_test) ) %>%
     yardstick::accuracy()
 
   data_test_all <- data_recipe %>%

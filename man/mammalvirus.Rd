@@ -31,4 +31,7 @@ mammalvirus
 A dataset containing the incidence of virus on mammals collected by
 Sotomayor-Bonilla-et-al 2019.
 }
+\examples{
+data(mammalvirus)
+}
 \keyword{datasets}

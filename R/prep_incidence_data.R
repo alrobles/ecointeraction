@@ -16,7 +16,7 @@
 #' @examples
 #' library(ecointeraction)
 #' birdsplasmodium %>%
-#'     acummulate_incidence(group = species) %>%
+#'     accumulate_incidence(group = species) %>%
 #'     cutoff_incidence() %>%
 #'     prep_incidence_data(distance  = birdsdistance)
 prep_incidence_data <- function(incidence, distance,  by = "species" ){

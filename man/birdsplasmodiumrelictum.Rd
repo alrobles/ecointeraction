@@ -23,4 +23,7 @@ MalAvi lineage code: GRW04, GRW11, LZFUS01 and SGS1
 The raw-data is from Malavi dataset. Contains avian malaria information for different lineage.
 Then data was summarized counting entries for Plasmodium relictum taked as raw incidence
 }
+\examples{
+data(birdsplasmodiumrelictum)
+}
 \keyword{datasets}

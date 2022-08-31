@@ -24,4 +24,7 @@ Environmental information from WorldClim project
 Phylogenetic information from Vertlife project
 Geografical information from GBIF project
 }
+\examples{
+data(birdsdistance)
+}
 \keyword{datasets}

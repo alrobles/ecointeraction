@@ -14,6 +14,6 @@
 #'   \item{incidence}{Number of coronavirus records from dBatVir database for each species of bat }
 #' }
 #'@source \url{http://http://www.mgc.ac.cn/DBatVir/}
-#'@example
+#'@examples
 #' data(batscoronavirus)
 "batscoronavirus"

@@ -14,6 +14,6 @@
 #'   \item{incidence}{Number of records from Malavi database for each species fo Plasmodium gn.}
 #' }
 #'@source \url{http://130.235.244.92/Malavi/}
-#'@example
+#'@examples
 #' data(birdsplasmodium)
 "birdsplasmodium"

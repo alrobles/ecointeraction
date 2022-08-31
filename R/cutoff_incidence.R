@@ -13,7 +13,7 @@
 #'
 #' @examples
 #' library(ecointeraction)
-#'acummulate_incidence(mammalvirus, virus, incidence) %>% cutoff_incidence
+#' accumulate_incidence(mammalvirus, virus, incidence) %>% cutoff_incidence
 cutoff_incidence <- function(data, incidence = incidence, accuracy = 4 ){
 
   incidence <- rlang::enquo(incidence)
@@ -24,9 +24,11 @@ cutoff_incidence <- function(data, incidence = incidence, accuracy = 4 ){
   ratediffdiff <- rlang::enquo(ratediffdiff)
 
   #data <- acummulate_incidence(mammalvirus, group = mammal_species)
-  data_cummulative_rate <- cummulative_rate(data, incidence = incidence,
-                                            cummulativesum = cummulativesum,  accuracy = accuracy) %>%
+  data_cummulative_rate <- cumulative_rate(data, incidence = incidence,
+                                            cummulativesum = cummulativesum,
+                                           accuracy = accuracy) %>%
     stats::na.exclude()
+
   id_min <- data_cummulative_rate %>%
     dplyr::arrange( ratediffdiff) %>%
     dplyr::slice(1) %>%

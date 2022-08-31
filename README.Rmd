@@ -34,14 +34,25 @@ devtools::install_github("alrobles/ecointeraction")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
-
-```{r example}
+We explore a raw data base of mammal virus.
+    
+```{r example1}
 library(ecointeraction)
-## basic example code
+mammalvirus
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
+```{r example11, echo=FALSE}
+knitr::kable(head(mammalvirus))
+```
+We use the function accumulate_incidence
+
+
+```{r example2}
+library(ecointeraction)
+ecointeraction::accumulate_incidence(data = mammalvirus, group = mammal_species, incidence = incidence)
+```
+
+
 
 ```{r cars}
 summary(cars)

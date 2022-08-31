@@ -14,6 +14,6 @@
 #'   \item{incidence}{Number of records from Tolsa et al. 2018 database for each species of bird}
 #' }
 #'@source \url{http://dx.doi.org/10.1098/rspb.2018.2178}
-#'@example
+#'@examples
 #' data(birdswnv)
 "birdswnv"
