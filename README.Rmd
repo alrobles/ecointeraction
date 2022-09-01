@@ -36,33 +36,58 @@ devtools::install_github("alrobles/ecointeraction")
 
 We explore a raw data base of mammal virus.
     
-```{r example1}
+```{r example2, echo=FALSE}
 library(ecointeraction)
-DT::datatable(mammalvirus)
-```
-
-```{r example11, echo=FALSE}
 knitr::kable(head(mammalvirus))
 ```
-We use the function accumulate_incidence
+We use the function accumulate_incidence to get how many reported cases there is 
+for each host species. We use this information to create the datasets to train.
 
-```{r example2}
-library(ecointeraction)
-ecointeraction::accumulate_incidence(data = mammalvirus, group = mammal_species, incidence = incidence)
+```{r example3}
+
+mammal_flavivirus_incidence <- accumulate_incidence(data = mammalvirus,
+                                                    group = mammal_species,
+                                                    incidence = incidence)
+```
+
+We print here the frist 6 with head.
+
+```{r example4, echo=FALSE}
+knitr::kable(head(mammal_flavivirus_incidence))
 ```
 
 
+We use the cutoff_incidence function to keet just the portion of host that has
+more information about the system.
 
-```{r cars}
-summary(cars)
+```{r example5}
+flavivirus_host <- cutoff_incidence(mammal_flavivirus_incidence)
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
+```{r example6, echo=FALSE}
+knitr::kable(flavivirus_host)
 ```
 
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.
+
+## Prepare data for modelling
+Now we can prepare the dataset for modelling using a distance table. We provide 
+here a distance table calculated befare using mean distance from one target host
+to the other host. We show here the full pipeline using a count table
+of plasmodium reported for each host species. Then we use the
+`accumulate_incidence` function and the `cuttoff_incidence` to keep the host with
+the most information. Then we use  `prep_incidence_data`  to prepare the data for
+modelling using the `birdsdistance` dataset we provide and print the fifteen 
+first rows
+
+
+
+
+```{r example7}
+plasmodium_data <- birdsplasmodium %>%
+     accumulate_incidence(group = species) %>%
+     cutoff_incidence() %>%
+     prep_incidence_data(distance  = birdsdistance) 
+```
+```{r example8, echo=FALSE}
+knitr::kable( head(plasmodium_data, 15) )
+```
