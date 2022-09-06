@@ -89,5 +89,7 @@ plasmodium_data <- birdsplasmodium %>%
      prep_incidence_data(distance  = birdsdistance) 
 ```
 ```{r example8, echo=FALSE}
-knitr::kable( head(plasmodium_data, 15) )
+models <- automodel_replication(plasmodium_data, birdsdistance)
+models$roc
 ```
+

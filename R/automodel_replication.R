@@ -34,7 +34,7 @@ automodel_replication <- function(listData, distance_df)
 
   data_recipe <- data_split %>%
     rsample::training() %>%
-    recipes::recipe(.data$incidence ~.) %>%
+    recipes::recipe(incidence ~.) %>%
     recipes::step_interact(terms = ~ (tidyselect::matches("distance$"))^3) %>%
     recipes::prep()
 
@@ -75,7 +75,7 @@ automodel_replication <- function(listData, distance_df)
     return(mg)
   }
 
-  mg <- AutomodelGrid(data_train, tunelength = 6)
+  mg <-suppressWarnings(AutomodelGrid(data_train, tunelength = 6))
 
   # #variabe importance
   #

@@ -104,20 +104,11 @@ plasmodium_data <- birdsplasmodium %>%
 #> Joining, by = c("species", "geo_distance", "env_distance", "phylo_distance")
 ```
 
-| species                   | geo_distance | env_distance | phylo_distance | incidence   |
-|:--------------------------|-------------:|-------------:|---------------:|:------------|
-| Iridosornis reinhardti    |    0.1397235 |   -0.5630546 |     -0.2912661 | unknown     |
-| Myzomela kuehni           |    0.3488246 |   -0.5975868 |     -0.2912661 | unknown     |
-| Carpodacus puniceus       |   -0.1014722 |    0.4244484 |     -0.2912661 | unknown     |
-| Dysithamnus stictothorax  |   -0.3269031 |   -0.5953258 |     -0.2912661 | unknown     |
-| Neochmia phaeton          |    0.4387309 |   -0.2816839 |     -0.2912661 | unknown     |
-| Dicrurus montanus         |    0.2600139 |   -0.1821658 |     -0.2912661 | unknown     |
-| Pteridophora alberti      |    0.5307526 |    1.7042303 |     -0.2912661 | unknown     |
-| Cardellina rubrifrons     |    0.2637090 |   -0.3498805 |     -0.2912661 | unknown     |
-| Ficedula albicollis       |    0.0670664 |    0.0896840 |     -0.2912661 | susceptible |
-| Columba elphinstonii      |   -0.2481989 |   -0.5263623 |      0.7790859 | unknown     |
-| Acrocephalus arundinaceus |   -0.0214733 |    0.5824534 |     -0.2912661 | susceptible |
-| Phaenicophaeus diardi     |    0.1397283 |    0.4139493 |      0.4670119 | unknown     |
-| Falco fasciinucha         |    0.1112847 |   -0.5305628 |      0.3534907 | unknown     |
-| Myzomela erythromelas     |    0.6220754 |    1.5898503 |     -0.2912661 | unknown     |
-| Garrulax pectoralis       |    0.1013659 |   -0.3192215 |     -0.2912661 | unknown     |
+    #> [2022-09-06 10:42:01] Training of 'Ranger' started.
+    #> Loading required package: ggplot2
+    #> Loading required package: lattice
+    #> [2022-09-06 10:42:37] Training of 'Ranger' completed.
+    #> # A tibble: 1 x 3
+    #>   .metric .estimator .estimate
+    #>   <chr>   <chr>          <dbl>
+    #> 1 roc_auc binary         0.726
