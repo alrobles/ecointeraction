@@ -104,11 +104,15 @@ plasmodium_data <- birdsplasmodium %>%
 #> Joining, by = c("species", "geo_distance", "env_distance", "phylo_distance")
 ```
 
-    #> [2022-09-06 10:42:01] Training of 'Ranger' started.
-    #> Loading required package: ggplot2
-    #> Loading required package: lattice
-    #> [2022-09-06 10:42:37] Training of 'Ranger' completed.
-    #> # A tibble: 1 x 3
-    #>   .metric .estimator .estimate
-    #>   <chr>   <chr>          <dbl>
-    #> 1 roc_auc binary         0.726
+``` r
+models <- automodel_replication(plasmodium_data, birdsdistance)
+#> [2022-09-06 10:54:02] Training of 'Ranger' started.
+#> Loading required package: ggplot2
+#> Loading required package: lattice
+#> [2022-09-06 10:54:36] Training of 'Ranger' completed.
+models$roc
+#> # A tibble: 1 x 3
+#>   .metric .estimator .estimate
+#>   <chr>   <chr>          <dbl>
+#> 1 roc_auc binary         0.911
+```
