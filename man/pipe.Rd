@@ -4,7 +4,7 @@
 \alias{\%>\%}
 \title{Pipe transforming functinos}
 \arguments{
-\item{lhs, rhs}{A visualisation and a function to apply to it}
+\item{lhs, rhs}{A visualization and a function to apply to it}
 }
 \description{
 Like dplyr, ecointeraction also uses the pipe function, \code{\%>\%} to turn

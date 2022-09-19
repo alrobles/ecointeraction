@@ -2,7 +2,7 @@
 #'
 #' A dataset containing the incidence of West Nile Virus on birds
 #' The raw-data is from Tolsá, María J., et al. "Macroecology of birds potentially susceptible to West Nile virus."
-#' #' Then data was summarized counting entries for West Nile Virus taked as raw incidence for each bird
+#' #' Then data was summarized counting entries for West Nile Virus took as raw incidence for each bird
 #'
 #'@docType data
 #'

@@ -1,6 +1,6 @@
 #' mammalsdistance
 #'
-#' A dataset containing the median phylogenetic, geographical and enviromental distances of
+#' A data set containing the median phylogenetic, geographical and environmental distances of
 #' of terrestrial mammals. The raw-data has the distances for each pair of mammals.
 #' The data was centered and scaled. Then was summarized by each species taking the
 #' median for each distance.

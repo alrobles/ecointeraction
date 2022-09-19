@@ -13,10 +13,10 @@ Geografical information from GBIF project}
 \format{
 A data frame with 1191 rows and 12 variables:
 \describe{
-  \item{species}{Bats species}
-  \item{geo_distance}{Geographical distance}
-  \item{env_distance}{Environmental distance}
-  \item{phylo_distance}{Phylogenetic distance}
+\item{species}{Bats species}
+\item{geo_distance}{Geographical distance}
+\item{env_distance}{Environmental distance}
+\item{phylo_distance}{Phylogenetic distance}
 }
 }
 \usage{

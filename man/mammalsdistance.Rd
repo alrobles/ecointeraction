@@ -7,17 +7,17 @@
 \format{
 A data frame with 5109 rows and 4 variables:
 \describe{
-  \item{species}{Mammals species}
-  \item{geo_distance}{Geographical distance}
-  \item{env_distance}{Environmental distance}
-  \item{phylo_distance}{Phylogenetic distance}
+\item{species}{Mammals species}
+\item{geo_distance}{Geographical distance}
+\item{env_distance}{Environmental distance}
+\item{phylo_distance}{Phylogenetic distance}
 }
 }
 \usage{
 mammalsdistance
 }
 \description{
-A dataset containing the median phylogenetic, geographical and enviromental distances of
+A data set containing the median phylogenetic, geographical and environmental distances of
 of terrestrial mammals. The raw-data has the distances for each pair of mammals.
 The data was centered and scaled. Then was summarized by each species taking the
 median for each distance.

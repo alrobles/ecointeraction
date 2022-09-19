@@ -4,8 +4,8 @@
 \name{rodent_distance_raw}
 \alias{rodent_distance_raw}
 \title{batsdistance
-A dataset containing the  phylogenetic geometric mean,
-median geographical distance and most probable enviromental distances of rodents.
+A data set containing the  phylogenetic geometric mean,
+median geographical distance and most probable environmental distances of rodents.
 Environmental information from WorldClim project (PCA of bio layers)
 The raw-data has the distances for each pair of rodents.
 Phylogenetic information from Nathan Upham project,
@@ -13,10 +13,10 @@ Geografical information from UICN project.}
 \format{
 A data frame with 1191 rows and 12 variables:
 \describe{
-  \item{species}{Rodent species}
-  \item{geo_distance}{Geographical distance}
-  \item{env_distance}{Environmental distance}
-  \item{phy_distance}{Phylogenetic distance}
+\item{species}{Rodent species}
+\item{geo_distance}{Geographical distance}
+\item{env_distance}{Environmental distance}
+\item{phy_distance}{Phylogenetic distance}
 }
 }
 \usage{
@@ -24,8 +24,8 @@ rodent_distance_raw
 }
 \description{
 batsdistance
-A dataset containing the  phylogenetic geometric mean,
-median geographical distance and most probable enviromental distances of rodents.
+A data set containing the  phylogenetic geometric mean,
+median geographical distance and most probable environmental distances of rodents.
 Environmental information from WorldClim project (PCA of bio layers)
 The raw-data has the distances for each pair of rodents.
 Phylogenetic information from Nathan Upham project,

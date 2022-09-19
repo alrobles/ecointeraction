@@ -20,7 +20,7 @@ the incidence table must have an species column}
 }
 \value{
 A \code{data.frame} with data prepare to model. Includes a sample of median distance
- labeled as unknown class and incidence species labeled as susceptible class
+labeled as unknown class and incidence species labeled as susceptible class
 }
 \description{
 prep_incidence_data

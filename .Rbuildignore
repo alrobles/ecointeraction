@@ -6,3 +6,5 @@ data-raw
 ^pkgdown$
 ^data-raw$
 ^README\.Rmd$
+^cran-comments\.md$
+^CRAN-SUBMISSION$

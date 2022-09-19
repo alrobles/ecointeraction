@@ -1,6 +1,6 @@
 #' batsdistance
-#' A dataset containing the  phylogenetic geometric mean,
-#' median geographical distance and most probable enviromental distances of rodents.
+#' A data set containing the  phylogenetic geometric mean,
+#' median geographical distance and most probable environmental distances of rodents.
 #' Environmental information from WorldClim project (PCA of bio layers)
 #' The raw-data has the distances for each pair of rodents.
 #' Phylogenetic information from Nathan Upham project,

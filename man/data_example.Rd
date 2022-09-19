@@ -7,11 +7,11 @@
 \format{
 A data frame with 79 rows and 5 variables:
 \describe{
-  \item{species}{Bird species}
-  \item{geo_distance}{Geographical distance}
-  \item{env_distance}{Environmental distance}
-  \item{phylo_distance}{Phylogenetic distance}
-  \item{incidence}{Label if a host has been reported with the interaction}
+\item{species}{Bird species}
+\item{geo_distance}{Geographical distance}
+\item{env_distance}{Environmental distance}
+\item{phylo_distance}{Phylogenetic distance}
+\item{incidence}{Label if a host has been reported with the interaction}
 }
 }
 \usage{

@@ -1,6 +1,6 @@
 #' birdsdistance
 #'
-#' A dataset containing the median phylogenetic, geographical and enviromental distances of birds.
+#' A dat aset containing the median phylogenetic, geographical and environmental distances of birds.
 #' The raw-data has the distances for each pair of birds. The data was centered and scaled.
 #' Then was summarized by each species taking the median for each distance.
 #' Environmental information from WorldClim project

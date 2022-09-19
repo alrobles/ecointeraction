@@ -7,18 +7,18 @@
 \format{
 A data frame with 1191 rows and 12 variables:
 \describe{
-  \item{reference}{reference paper}
-  \item{sampling_year}{Year of the sampling}
-  \item{country}{Country of sample}
-  \item{diagnostic_test}{Diagnostic test used in the sampling}
-  \item{diagnostic_test_type}{Type of the diagnostic test used in the sampling}
-  \item{subclade}{Subclade of the virus sampled}
-  \item{virus}{Virus detected in the sample}
-  \item{order}{Order of the mammal sampled}
-  \item{family}{Family of the mammal sampled}
-  \item{mammal_species}{Species of the mammal sampled}
-  \item{individual_tested}{Number of individual mammals tested in the sample}
-  \item{incidence}{Number of virus positive sampled in the individual tested}
+\item{reference}{reference paper}
+\item{sampling_year}{Year of the sampling}
+\item{country}{Country of sample}
+\item{diagnostic_test}{Diagnostic test used in the sampling}
+\item{diagnostic_test_type}{Type of the diagnostic test used in the sampling}
+\item{subclade}{Subclade of the virus sampled}
+\item{virus}{Virus detected in the sample}
+\item{order}{Order of the mammal sampled}
+\item{family}{Family of the mammal sampled}
+\item{mammal_species}{Species of the mammal sampled}
+\item{individual_tested}{Number of individual mammals tested in the sample}
+\item{incidence}{Number of virus positive sampled in the individual tested}
 }
 }
 \source{

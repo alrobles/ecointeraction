@@ -7,7 +7,7 @@
 #' @name %>%
 #' @rdname pipe
 #' @export
-#' @param lhs,rhs A visualisation and a function to apply to it
+#' @param lhs,rhs A visualization and a function to apply to it
 #' @examples
 #' # Instead of cummulative_rate(accumulate_incidence(mammalvirus,
 #' # mammal_species, incidence), id, incidence, cummulativesum)
