@@ -6,7 +6,7 @@ Authors@R:
            comment = c(ORCID = "0000-0002-4674-4270"))
 Description: Ecointeraction is a set of tools for modelling ecological interactions.
   This is analysis is carried out using Machine Learning techniques.
-License: MIT + file LICENSE
+License: GPL | MIT + file LICENSE
 Depends: R (>= 3.5.0)
 Imports:
   dplyr,

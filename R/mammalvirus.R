@@ -22,7 +22,7 @@
 #'   \item{individual_tested}{Number of individual mammals tested in the sample}
 #'   \item{incidence}{Number of virus positive sampled in the individual tested}
 #' }
-#'@source \url{https://doi.org/10.1007/s10393-019-01442-2}
+#'@source \doi{10.1007/s10393-019-01442-2}
 #'@examples
 #' data(mammalvirus)
 "mammalvirus"

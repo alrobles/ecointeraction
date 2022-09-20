@@ -13,7 +13,7 @@
 #'   \item{species}{Bird species}
 #'   \item{incidence}{Number of records from Tolsa et al. 2018 database for each species of bird}
 #' }
-#'@source \url{http://dx.doi.org/10.1098/rspb.2018.2178}
+#'@source \doi{10.1098/rspb.2018.2178}
 #'@examples
 #' data(birdswnv)
 "birdswnv"
