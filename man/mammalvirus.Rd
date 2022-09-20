@@ -22,7 +22,7 @@ A data frame with 1191 rows and 12 variables:
 }
 }
 \source{
-\url{https://doi.org/10.1007/s10393-019-01442-2}
+\doi{10.1007/s10393-019-01442-2}
 }
 \usage{
 mammalvirus

@@ -4,8 +4,10 @@ Version: 0.1.0
 Authors@R: 
     person("Angel", "Robles", , "a.l.robles.fernandez@gmail.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0002-4674-4270"))
-Description: Ecointeraction is a set of tools for modelling ecological interactions.
-  This is analysis is carried out using Machine Learning techniques.
+Description: Set of tools for modelling ecological interactions from 
+  phylogenetic, environmental and geographical distance. Include functions to 
+  prepare data and analyse data. This is analysis is carried out using 
+  Machine Learning techniques.
 License: GPL | MIT + file LICENSE
 Depends: R (>= 3.5.0)
 Imports:

@@ -12,7 +12,7 @@ A data frame with 1209 rows and 2 variables:
 }
 }
 \source{
-\url{http://dx.doi.org/10.1098/rspb.2018.2178}
+\doi{10.1098/rspb.2018.2178}
 }
 \usage{
 birdswnv
