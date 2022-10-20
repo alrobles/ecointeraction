@@ -35,7 +35,7 @@ automodel_replication <- function(listData, distance_df)
   data_recipe <- data_split %>%
     rsample::training() %>%
     recipes::recipe(incidence ~.) %>%
-    recipes::step_interact(terms = ~ (tidyselect::matches("distance$"))^3) %>%
+    recipes::step_interact(terms = ~ (tidyselect::matches("distance$"))^2) %>%
     recipes::prep()
 
 
