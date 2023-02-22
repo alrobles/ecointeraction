@@ -1,4 +1,4 @@
-#' batsdistance
+#' rodent_distance_raw
 #' A data set containing the  phylogenetic geometric mean,
 #' median geographical distance and most probable environmental distances of rodents.
 #' Environmental information from WorldClim project (PCA of bio layers)
