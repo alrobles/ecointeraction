@@ -1,9 +1,0 @@
-cff-version: 1.1.0
-message: "If you use this software, please cite it as below."
-authors:
-  - family-names: Ángel Luis
-    given-names: Robles Fernández
-    orcid: https://orcid.org/0000-0002-4674-4270
-title: alrobles/ecointeraction: v2.0.1
-version: v2.0.1
-date-released: 2023-09-05
