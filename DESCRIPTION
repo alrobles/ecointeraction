@@ -8,7 +8,7 @@ Description: Set of tools for modelling ecological interactions from
   phylogenetic, environmental and geographical distance. Include functions to 
   prepare data and analyse data. This is analysis is carried out using 
   Machine Learning techniques.
-License: GPL (>= 3) + file LICENSE
+License: GPL (>= 3) 
 Depends: R (>= 3.5.0)
 Imports:
   dplyr,
